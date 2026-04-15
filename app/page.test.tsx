@@ -9,4 +9,14 @@ describe("Home page", () => {
       screen.getByRole("heading", { name: /Laboratory work #1/i }),
     ).toBeInTheDocument();
   });
+
+  it("points the source card to the lab GitHub repo in a new tab", () => {
+    render(<Home />);
+    const source = screen.getByRole("link", { name: /GitHub repository/i });
+    expect(source).toHaveAttribute(
+      "href",
+      "https://github.com/Vlad-Dzemiuk/lab-1-setup",
+    );
+    expect(source).toHaveAttribute("target", "_blank");
+  });
 });
